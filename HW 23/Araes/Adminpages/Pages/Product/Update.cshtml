@@ -1,0 +1,77 @@
+﻿@page
+@model HW_23.Araes.Adminpages.Pages.Product.UpdateModel
+@{
+}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <link rel="stylesheet" href="~/css/createProduct.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Edit Product</h1>
+        @if ((TempData["ErrorMessage"]) != null)
+        {
+            <div class="alert alert-error text-center" style="margin-top:78px; width:100%; display:flex; justify-content:flex-end; ">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-main">
+
+                <div class="form-fields">
+                    <input type="text" hidden asp-for="updateProductDto.Id" placeholder="Enter Product name" required>
+
+                    <label for="title">Product Name</label>
+                    <input type="text" asp-for="updateProductDto.Name" placeholder="Enter Product name" required>
+                    <span asp-validation-for="updateProductDto.Name" class="text-danger small"></span>
+
+                    <label for="content">Description</label>
+                    <textarea asp-for="updateProductDto.Description" rows="6" placeholder="Enter Description" required></textarea>
+                    <span asp-validation-for="updateProductDto.Description" class="text-danger small"></span>
+
+                    <label asp-for="updateProductDto.CategoryId">Category</label>
+                    <select asp-for="updateProductDto.CategoryId">
+                        <option value="">Select Category</option>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="updateProductDto.CategoryId" class="text-danger small"></span>
+
+
+                    <div class="form-row">
+                        <div class="form-row-item">
+                            <label asp-for="updateProductDto.Price">Price ($)</label>
+                            <input type="number" asp-for="updateProductDto.Price" placeholder="Enter price">
+                            <span asp-validation-for="updateProductDto.Price" class="text-danger small"></span>
+                        </div>
+                        <div class="form-row-item">
+                            <label asp-for="updateProductDto.Count">Stock</label>
+                            <input type="number" asp-for="updateProductDto.Count" placeholder="Enter stock">
+                            <span asp-validation-for="updateProductDto.Count" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-upload">
+                    <label class="upload-box">
+                        <div class="upload-content">Upload Product Image</div>
+                        <input type="file" asp-for="updateProductDto.ImageFile" accept="image/*">
+                        <span asp-validation-for="updateProductDto.ImageFile" class="text-danger small"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Edit Product</button>
+        </form>
+        @section Scripts {
+
+            <partial name="_ValidationScriptsPartial" />
+        }
+    </div>
+
+</body>
+</html>

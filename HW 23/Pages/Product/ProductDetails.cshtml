@@ -1,0 +1,62 @@
+﻿@page
+@model HW_23.Pages.Product.ProductDetailsModel
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/productInfo.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="product-page">
+
+        <div class="product-image">
+            <img src="@Model.Product.ImagePath" alt="@Model.Product.Name">
+        </div>
+
+
+        <div class="product-details">
+            <h1 class="product-title">@Model.Product.Name</h1>
+            <div class="product-price">@Model.Product.Price</div>
+
+            @if (Model.Product.Count > 0)
+            {
+                <div class="stock in-stock">Available: @Model.Product.Count</div>
+            }
+            else
+            {
+                <div class="stock out-of-stock">Not Available</div>
+            }
+
+            <p class="product-description">
+                @Model.Product.Description
+            </p>
+
+
+            <form asp-page-handler="AddToCart" asp-route-productId="@Model.Product.Id" method="post">
+                <div class="quantity">
+                    <button type="button" class="quantity-btn" onclick="changeQty(-1)">−</button>
+                    <input type="text" asp-for="@Model.OrderItemCount" class="quantity-input" id="qty">
+                    <button type="button" class="quantity-btn" onclick="changeQty(1)">+</button>
+                </div>
+                <div>
+                    <a style="text-decoration:none;"><button class="add-to-cart">ADD TO CART</button></a>
+                </div>
+            </form>
+            <div class="message-box">
+                <p>
+                    @Model.Message
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeQty(val) {
+            let input = document.getElementById('qty');
+            let current = parseInt(input.value);
+            if (current + val >= 1) {
+                input.value = current + val;
+            }
+        }
+    </script>
+</body>

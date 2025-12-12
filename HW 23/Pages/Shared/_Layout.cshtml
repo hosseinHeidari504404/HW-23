@@ -1,0 +1,133 @@
+﻿@using HW_23.Basket_Handeller.ServiceB
+@{
+    @inject IBasketService basketService
+    var basketItems = await basketService.GetBasketItems(CancellationToken.None);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HW22.Presentation.RazorPages</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HW22.Presentation.RazorPages.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">FASHION <span>STORE</span></div>
+
+        <ul class="menu">
+            <li><a class="active" asp-page="/Home/Index">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="icons">
+            <div class="user" role="button" aria-label="Account" title="Account">
+                <a asp-page="/Account/Login" style="text-decoration:none;"> <i class="fa-regular fa-user"></i></a>
+            </div>
+            <div class="cart"><i class="fa-solid fa-cart-shopping"></i><span>@basketService.GetOrderCount()</span></div>
+            <div class="fav"><i class="fa-regular fa-heart"></i><span>0</span></div>
+            <div class="logout" role="button" aria-label="Logout">
+                <a asp-page="/Account/Login" asp-page-handler="Logout" style="text-decoration:none; color:inherit;">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="side-cart-overlay" id="sideCartOverlay"></div>
+
+    <div class="side-cart" id="sideCart">
+        <div class="cart-header">
+            <h3>YOUR CART</h3>
+            <span class="close-cart" id="closeCart">×</span>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+
+            @foreach (var item in basketItems)
+            {
+                <div class="cart-item">
+                    <img src="@item.ProductImagePath" alt="@item.ProductName">
+                    <div class="item-details">
+                        <h4>@item.ProductName</h4>
+                        <p class="price">@item.TotalPrice</p>
+                        <div class="quantity-controls">
+                            <input type="text" value="@item.Count" class="qty-input" readonly>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+        <div class="cart-total">
+            <strong>Total: <span id="cartTotal">@basketService.GetBasket().TotalPrice</span></strong>
+        </div>
+
+        <div class="cart-buttons">
+            <a asp-page="/Cart/Index" class="btn-checkout">View Cart</a>
+        </div>
+    </div>
+
+    <main role="main" class="flex-grow-1">
+        @RenderBody()
+    </main>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+
+    @RenderSection("Scripts", required: false)
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const cartIcon = document.querySelector('.cart');
+        const sideCart = document.getElementById('sideCart');
+        const overlay = document.getElementById('sideCartOverlay');
+        const closeCartBtn = document.getElementById('closeCart');
+
+        function openCart() {
+            sideCart.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            sideCart.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        cartIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            openCart();
+        });
+
+        closeCartBtn.addEventListener('click', closeCart);
+        overlay.addEventListener('click', closeCart);
+
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCart();
+        });
+    </script>
+</body>
+
+</html>

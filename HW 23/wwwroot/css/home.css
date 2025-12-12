@@ -1,0 +1,240 @@
+﻿.hero {
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    background: url('/Images/slide-02.jpg') center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding-left: 100px; /* فاصله سمت چپ برای محتوا */
+    position: relative;
+}
+
+    .hero .left {
+        max-width: 600px; /* محدود کردن عرض متن */
+    }
+
+    .hero h3 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 {
+        font-size: 65px;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+
+    .hero button {
+        background: #6C76DD;
+        color: white;
+        padding: 15px 35px;
+        font-size: 17px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+        .hero button:hover {
+            transform: scale(1.05);
+        }
+
+.container2 {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    .card p {
+        margin: 0;
+        color: #777;
+        font-size: 0.95rem;
+    }
+
+.wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.logo {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.cat-item {
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+    .cat-item.active {
+        color: #717fe0;
+        font-weight: bold;
+    }
+
+        .cat-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #717fe0;
+            border-radius: 3px;
+        }
+
+    .cat-item:hover {
+        color: #717fe0;
+    }
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+.product-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.product-title {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.product-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.quick-view {
+    background: #717fe0;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+    .quick-view:hover {
+        background: #5a67d8;
+    }
+
+.hidden {
+    display: none;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.add-cart-btn {
+    background: #8c52ff;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.message-box {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #dc2626;
+    text-align: center;
+}
+
+.add-cart-btn:hover {
+    background: #6a30d4;
+    transform: scale(1.05);
+}

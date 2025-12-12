@@ -1,0 +1,75 @@
+﻿@page
+@model HW_23.Araes.Adminpages.Pages.Product.CreateModel
+@{
+}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <link rel="stylesheet" href="~/css/createProduct.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add New Product</h1>
+        @if ((TempData["ErrorMessage"]) != null)
+        {
+            <div class="alert alert-error">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-main">
+
+                <div class="form-fields">
+                    <label>Product Name</label>
+                    <input asp-for="CreateProductDto.Name" placeholder="Enter Product name" required>
+                    <span asp-validation-for="CreateProductDto.Name" class="text-danger small"></span>
+
+                    <label>Description</label>
+                    <textarea asp-for="CreateProductDto.Description" rows="6" placeholder="Enter Description" required></textarea>
+                    <span asp-validation-for="CreateProductDto.Description" class="text-danger small"></span>
+
+                    <label asp-for="CreateProductDto.CategoryId">Category</label>
+                    <select asp-for="CreateProductDto.CategoryId">
+                        <option value="">Select Category</option>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CreateProductDto.CategoryId" class="text-danger small"></span>
+
+
+                    <div class="form-row">
+                        <div class="form-row-item">
+                            <label asp-for="CreateProductDto.Price">Price ($)</label>
+                            <input asp-for="CreateProductDto.Price" placeholder="Enter price">
+                            <span asp-validation-for="CreateProductDto.Price" class="text-danger small"></span>
+                        </div>
+                        <div class="form-row-item">
+                            <label asp-for="CreateProductDto.Count">Stock</label>
+                            <input asp-for="CreateProductDto.Count" placeholder="Enter stock">
+                            <span asp-validation-for="CreateProductDto.Count" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-upload">
+                    <label class="upload-box">
+                        <div class="upload-content">Upload Product Image</div>
+                        <input type="file" asp-for="CreateProductDto.ImageFile" accept="image/*">
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Add Product</button>
+        </form>
+        @section Scripts {
+
+            <partial name="_ValidationScriptsPartial" />
+        }
+    </div>
+</body>
+</html>
+

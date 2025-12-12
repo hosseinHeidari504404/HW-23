@@ -1,0 +1,140 @@
+﻿
+.form-container {
+    background: #fff;
+    padding: 30px 40px;
+    margin-top: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    width: 800px;
+}
+
+    .form-container h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #8c52ff;
+    }
+
+.form-flex {
+    display: flex;
+    gap: 20px;
+}
+
+.form-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    direction: ltr;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    direction: ltr;
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+.form-right {
+    width: 350px;
+}
+
+    .form-right .upload-box {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+.upload-box .upload-content {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    font-weight: bold;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.upload-box input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+
+.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    background: #8c52ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+    .submit-btn:hover {
+        background: #8e44ad;
+    }
+
+.message-box {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #dc2626;
+    text-align: center;
+}
+
+.alert {
+    padding: 15px 20px;
+    margin: 20px auto;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* پیام موفق */
+.alert-success {
+    background-color: #e6ffed;
+    border: 2px solid #00a65a;
+    color: #0f5132;
+}
+
+/* پیام خطا */
+.alert-error {
+    background-color: #ffe6e6;
+    border: 2px solid #d9534f;
+    color: #842029;
+}

@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/01-Domin/" />
+  <Folder Name="/src/01-Domin/Core/">
+    <Project Path="DomainCore/DomainCore.csproj" />
+  </Folder>
+  <Folder Name="/src/01-Domin/Services/">
+    <Project Path="DomainAppServices/DomainAppServices.csproj" />
+    <Project Path="DomainServices/DomainServices.csproj" />
+  </Folder>
+  <Folder Name="/src/02-Infrastructure/" />
+  <Folder Name="/src/02-Infrastructure/Data/">
+    <Project Path="DataAccess/DataAccess.csproj" />
+  </Folder>
+  <Folder Name="/src/02-Infrastructure/DB/">
+    <Project Path="DbHandeller/DbHandeller.csproj" />
+  </Folder>
+  <Folder Name="/src/03-EndPoint/">
+    <Project Path="HW 23/HW 23.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,33 @@
+﻿@page
+@model HW_23.Araes.Adminpages.Pages.Order.OrderItmesModel
+@{
+}
+<div class="page-header">
+    <h1>Orders Details</h1>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Count</th>
+            <th>Unit Price</th>
+            <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td><img src="@item.ProductImagePath" alt="@item.ProductName" class="product-img" /></td>
+                <td>@item.ProductName</td>
+                <td>@item.Count</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.TotalPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,48 @@
+﻿@page
+@model HW_23.Araes.Adminpages.Pages.Product.IndexModel
+@{
+}
+<div class="page-header">
+    <h1>Product Management</h1>
+    <a asp-page="/Product/Create" class="add-btn">Add New Product</a>
+</div>
+@if ((TempData["Message"]) != null)
+{
+    <div class="alert alert-success text-center" style="margin-top:78px; width:350px; display:flex; justify-content:flex-end; ">
+        @TempData["Message"]
+    </div>
+}
+@if ((TempData["ErrorMessage"]) != null)
+{
+    <div class="alert alert-error text-center" style="margin-top:78px; width:350px; display:flex; justify-content:flex-end; ">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td><img src="@product.ImagePath" alt="@product.Name" class="product-img"></td>
+                <td>@product.Name</td>
+                <td>@product.Category</td>
+                <td>@product.Price Toman</td>
+                <td>@product.Count</td>
+                <td class="actions">
+                    <a asp-page="Update" asp-route-productId="@product.Id"><button class="btn edit">Edit</button></a>
+                    <a asp-page-handler="Delete" asp-route-productId="@product.Id"><button class="btn delete">Delete</button></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

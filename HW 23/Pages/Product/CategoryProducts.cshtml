@@ -1,0 +1,44 @@
+﻿@page
+@model HW_23.Pages.Product.CategoryProductsModel
+@{
+
+}
+<head>
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="wrapper" style="margin-top:80px;">
+
+        <h1>@Model.Category.Name</h1>
+
+        <div class="products-grid">
+            @foreach (var product in Model.ProductDtos)
+            {
+                <div class="product-card">
+                    <img src="@product.ImagePath" alt="@product.Name" class="product-img">
+
+                    <div class="product-info">
+                        <div class="product-title">@product.Name</div>
+                        <div class="product-price">@product.Price Toman</div>
+
+                        <div class="product-actions">
+                            <a style="text-decoration:none;" asp-page="/Product/ProductDetails" asp-route-productId="@product.Id"><button class="quick-view">Quick View</button></a>
+
+
+                            <form method="post" asp-page-handler="AddToBasket" asp-route-productId="@product.Id" asp-route-categoryId="@Model.Category.Id">
+                                <button type="submit" class="add-cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </button>
+                            </form>
+                            <div class="message-box">
+                                <p>
+                                    @Model.Message
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>

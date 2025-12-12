@@ -1,0 +1,40 @@
+﻿@page
+@model HW_23.Araes.Adminpages.Pages.Category.IndexModel
+@{
+}
+
+<div class="page-header">
+    <h1>Category Management</h1>
+    <a asp-page="/Category/Create" class="add-btn">Add New Category</a>
+</div>
+@if ((TempData["Message"]) != null)
+{
+    <div class="alert alert-success text-center" style="margin-top:78px; width:350px; display:flex; justify-content:flex-end; ">
+        @TempData["Message"]
+    </div>
+}
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model.Categories)
+        {
+            <tr>
+                <td><img src="@category.ImagePath" alt="@category.Name" class="product-img"></td>
+                <td>@category.Name</td>
+                <td>@category.Description</td>
+                <td class="actions">
+                    <a asp-page="Update" asp-route-categoryId="@category.Id"><button class="btn edit">Edit</button></a>
+                    <a asp-page-handler="Delete" asp-route-categoryId="@category.Id"><button class="btn delete">Delete</button></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,84 @@
+﻿@page
+@model HW_23.Pages.Home.HomeModel
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+</head>
+<body>
+    @if ((TempData["AccountMessage"]) != null)
+    {
+        <div class="alert alert-success text-center" style="margin-top:78px; width:250px; display:flex; justify-content:flex-end; ">
+            @TempData["AccountMessage"]
+        </div>
+    }
+    <section class="hero">
+        <div class="left">
+            <h3>Men Collection 2025</h3>
+            <h1>NEW SEASON</h1>
+            <button>SHOP NOW</button>
+        </div>
+    </section>
+
+    <div class="container2">
+        <div class="cards">
+            @foreach (var category in Model.Categories)
+            {
+                <div class="card">
+                    <img src="@category.ImagePath" alt="@category.Name">
+                    <a style="text-decoration: none;" asp-page="/Product/CategoryProducts" asp-route-categoryId="@category.Id"><h3>@category.Name</h3></a>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    <div class="wrapper">
+
+        <h1>PRODUCT OVERVIEW</h1>
+
+        <div class="categories">
+            <div class="cat-item active" data-category="all">All Products</div>
+            @foreach (var category in Model.Categories)
+            {
+                <div class="cat-item">@category.Name</div>
+            }
+
+        </div>
+
+        <div class="products-grid">
+            @foreach (var product in Model.Products)
+            {
+                <div class="product-card">
+                    <img src="@product.ImagePath" alt="@product.Name" class="product-img">
+
+                    <div class="product-info">
+                        <div class="product-title">@product.Name</div>
+                        <div class="product-price">@product.Price Toman</div>
+
+                        <div class="product-actions">
+                            <a style="text-decoration:none;" asp-page="/Product/ProductDetails" asp-route-productId="@product.Id"><button class="quick-view">Quick View</button></a>
+
+
+                            <form method="post" asp-page-handler="AddToBasket" asp-route-productId="@product.Id">
+                                <button type="submit" class="add-cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </button>
+                            </form>
+                            <div class="message-box">
+                                <p>
+                                    @Model.Message
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+</body>
+

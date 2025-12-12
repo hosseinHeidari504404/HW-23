@@ -1,0 +1,133 @@
+﻿.product-page {
+    max-width: 1200px;
+    margin: 100px auto 50px;
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.product-image {
+    width: 100%; /* کارت پر شود */
+    max-width: 350px; /* حداکثر عرض */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+    .product-image img {
+        width: 100%;
+        height: auto; /* ارتفاع خودکار برای حفظ نسبت تصویر */
+        object-fit: contain; /* کل عکس داخل کارت نمایش داده شود */
+        display: block;
+        transition: transform 0.4s;
+    }
+
+        .product-image img:hover {
+            transform: scale(1.04);
+        }
+
+.product-details {
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px;
+    align-self: flex-start;
+}
+
+.product-title {
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #222;
+}
+
+.product-price {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.product-description {
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+
+/* تعداد محصول */
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    background: #f1f1f1;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.quantity-input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.add-to-cart {
+    background: #717fe0;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 16px 50px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+    .add-to-cart:hover {
+        background: #5a0a7f3;
+    }
+
+.wishlist {
+    margin-top: 40px;
+    font-size: 28px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+    .wishlist:hover, .wishlist.active {
+        color: #e91e63;
+    }
+
+.stock {
+    font-size: 18px;
+    margin: 12px 0;
+    font-weight: bold;
+}
+
+.in-stock {
+    color: #0c9e2e;
+}
+
+.out-of-stock {
+    color: #e00000;
+}
+
+.message-box {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #dc2626;
+    text-align: center;
+}

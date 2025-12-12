@@ -1,0 +1,53 @@
+﻿@page
+@model HW_23.Araes.Adminpages.Pages.Category.CreateModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <link rel="stylesheet" href="~/css/create.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add New Category</h1>
+        @if ((TempData["ErrorMessage"]) != null)
+        {
+            <div class="alert alert-error text-center" style="margin-top:78px; width:100%; display:flex; justify-content:flex-end; ">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-flex">
+                <div class="form-left">
+
+                    <label for="title">Category Name</label>
+                    <input asp-for="CategoryDto.Name" placeholder="Enter Category name" required>
+                    <span asp-validation-for="CategoryDto.Name" class="text-danger small"></span>
+
+                    <label for="content">Description</label>
+                    <textarea asp-for="CategoryDto.Description" rows="6" placeholder="Enter Description" required></textarea>
+                    <span asp-validation-for="CategoryDto.Description" class="text-danger small"></span>
+                </div>
+
+                <div class="form-right">
+                    <label class="upload-box">
+                        <div class="upload-content">Upload Category Image</div>
+                        <input type="file" asp-for="CategoryDto.ImageFile"  accept="image/*">
+                        <span asp-validation-for="CategoryDto.ImageFile" class="text-danger small"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Add Category</button>
+        </form>
+        
+    </div>
+   
+    @section Scripts {
+
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+</html>
+
